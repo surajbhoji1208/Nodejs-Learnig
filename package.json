@@ -19,5 +19,8 @@
   "homepage": "https://github.com/surajbhoji1208/Nodejs-Learnig#readme",
   "devDependencies": {
     "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
   }
 }

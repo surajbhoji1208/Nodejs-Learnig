@@ -1,9 +1,13 @@
 const http = require('http');
+const express = require('express')
+const app = express()
 
-const routes = require('./routes');
-
-console.log(routes.someText);
-
-const server = http.createServer(routes.handler);
-
-server.listen(4000);  
+app.use((req,res,next)=>{
+    console.log("this is form middleware 1")
+    next()
+})
+app.use((req,res,next)=>{
+    console.log("this is from middleware 2");
+    res.send("<h1>hello from middleware 2</h1>")
+})
+app.listen(4000)
