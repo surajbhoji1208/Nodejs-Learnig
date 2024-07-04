@@ -1,11 +1,22 @@
-const express = require('express')
-const path = require('path')
-const dirNane = require('../util/path')
+const path = require('path');
 
-const routes = express.Router()
+const express = require('express');
 
-routes.get('/', (req, res, next) => {
-    res.sendFile(path.join(dirNane,'views','shop.html'))
+const rootDir = require('../util/path');
+const adminData = require('./admin');
+
+const router = express.Router();
+
+router.get('/', (req, res, next) => {
+  const products = adminData.products;
+  res.render('shop', {
+    prods: products,
+    pageTitle: 'Shop',
+    path: '/',
+    hasProducts: products.length > 0,
+    activeShop: true,
+    productCSS: true
+  });
 });
 
-module.exports = routes
+module.exports = router;
